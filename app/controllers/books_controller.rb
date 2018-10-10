@@ -4,4 +4,11 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def new
+
+  end
+
+  def create
+    Book.create(params[:book])
+  end
 end
