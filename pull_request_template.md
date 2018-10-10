@@ -39,6 +39,6 @@ closes #
 Collapse 
 Message Input
 
-Message @Nick Lindeberg
+Slack @Dan Hutchinson
 
 Files

@@ -2,7 +2,7 @@
 
 <% @books.each do |book| %>
   <div class="book_card" id="book-<%= book.id %>">
-  <h2><%= book.title %></h2>
+  <h2><u><%= book.title %></u></h2>
   <ul class="book_stats">
     <li>Author(s):
       <% book.authors.each do |auth| %>
@@ -12,5 +12,9 @@
     <% end %>
     <li>Pages: <%= book.pages %></li>
     <li>Year: <%= book.year %> </li>
+    <li>Average Rating: <%= book.avg_rating %>
+      <ul class="ratings_count">
+        <li>Based on <%= book.review_count %> review(s)</li>
+      </ul></li>
   </ul>
 <% end %>
