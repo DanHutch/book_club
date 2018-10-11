@@ -31,7 +31,6 @@ describe Book, type: :model do
       expect(book.title).to eq("Good Omens")
       expect(book.authors.first.name).to eq("Neil Gaiman")
       expect(book.authors.last.name).to eq("Terry Pratchett")
-      binding.pry
       expect(book.authors.where(name: "Terry Pratchett").count).to eq(1)
     end
 
