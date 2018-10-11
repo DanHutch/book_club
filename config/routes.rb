@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :authors, :except => :index, :has_many => :books
   resources :reviews, :only => [:new, :destroy], :has_one => [:user, :book]
   resources :users, :only => [:show, :new], :has_many => :reviews
+
+  get 'users/:id', to: 'users#show'
 end
