@@ -9,19 +9,20 @@ class Book < ApplicationRecord
     hash[:title] = hash[:title].titlecase
     array = hash[:authors]
     hash[:authors] = array.map do |author|
+
       Book.select_author(author)
     end
     Book.create(hash)
   end
 
    def self.select_author(author)
-    database_author = Author.where(name: "#{author}".titlecase)
-      if database_author.empty?
-        Author.create(name: "#{author}".titlecase)
-      elsif author.class == Author
+    data = Author.find_by(name: "#{author}".titlecase) if author.class == String
+      if author.class == Author
         author
+      elsif data.nil?
+        Author.create(name: "#{author}".titlecase)
       else
-        database_author
+        data
       end
    end
 end
