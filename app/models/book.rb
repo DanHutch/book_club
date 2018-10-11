@@ -7,9 +7,8 @@ class Book < ApplicationRecord
 
   def self.create_new(hash)
     hash[:title] = hash[:title].titlecase
-    array = hash[:authors]
+    array = parce_string(hash)
     hash[:authors] = array.map do |author|
-
       Book.select_author(author)
     end
     Book.create(hash)
@@ -24,5 +23,9 @@ class Book < ApplicationRecord
       else
         data
       end
+   end
+
+   def self.parce_string(hash)
+     hash[:authors].titlecase.split(', ')
    end
 end

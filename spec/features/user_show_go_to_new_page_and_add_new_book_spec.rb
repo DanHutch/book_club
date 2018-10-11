@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "user_go_to_new_page_and_create_a_new_book" do
-  xit "should go and create a new book" do
+  it "should go and create a new book" do
     frank = Author.create(name: "Frank Herbert")
     dune = frank.books.create(title: "Dune", pages: 4123, year: 1965)
     ray = Author.create(name: "Ray Bradbury")
@@ -31,8 +31,8 @@ describe "user_go_to_new_page_and_create_a_new_book" do
       expect(page).to have_content(new_book.pages)
       expect(page).to have_content(new_book.year)
       expect(page).to_not have_content(authors)
-      expect(page).to have_content(new_book.authors.first.titlecase)
-      expect(page).to have_content(new_book.authors.last.titlecase)
+      expect(page).to have_content(new_book.authors.first.name.titlecase)
+      expect(page).to have_content(new_book.authors.last.name.titlecase)
     end
 
   end

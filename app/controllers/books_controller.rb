@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   def create
     Book.create_new(user_params(params))
-    redirect "/books"
+    redirect_to "/books"
   end
 
 # This block should be last in the class

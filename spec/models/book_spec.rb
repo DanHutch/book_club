@@ -34,6 +34,15 @@ describe Book, type: :model do
       expect(book.authors.where(name: "Terry Pratchett").count).to eq(1)
     end
 
+    it 'should parce a string with authors separate by (, )' do
+      authors_string = "george r. r. martin, vago de al lado, Gabriel garcia marquez"
+      neil = Author.create(name: "Neil Gaiman")
+      book = Book.create_new(title: "good omens", pages: 288, year: 1990, authors: [authors_string, neil])
+
+      expect(book.authors[0].name).to eq("George R. R. Martin")
+      expect(book.authors[1].name).to eq("vago de al lado".titlecase)
+      expect(book.authors[2].name).to eq("Gabriel garcia marquez".titlecase)
+    end
   end
 
 end
