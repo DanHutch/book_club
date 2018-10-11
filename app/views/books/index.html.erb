@@ -1,4 +1,5 @@
 <h1>Books</h1>
+<p>Sort By: <a id="best_rated" href="/books?sorting=avg_rating&direction=ASC"></a>
 
 <% @books.each do |book| %>
   <div class="book_card" id="book-<%= book.id %>">

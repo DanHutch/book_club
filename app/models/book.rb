@@ -10,7 +10,11 @@ class Book < ApplicationRecord
   end
 
   def avg_rating
-    reviews.average(:score)
+    reviews.average(:score).to_f.round(1)
+  end
+
+  def self.sort(trait, dir)
+    Book.select('books.*, avg(score) as avg_rating').joins(:reviews).group(:book_id, :id).order("#{trait} #{dir}")
   end
 
 end
