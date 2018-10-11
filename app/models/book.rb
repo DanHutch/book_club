@@ -13,6 +13,10 @@ class Book < ApplicationRecord
     reviews.average(:score).to_f.round(1)
   end
 
+  def self.show_3_by_rating(dir)
+    Book.do_sort('avg_rating', dir).first(3)
+  end
+
   def self.do_sort(trait, dir)
     Book.select('books.*, avg(score) as avg_rating, count(reviews) as review_count').joins(:reviews).group(:book_id, :id).order("#{trait} #{dir}")
   end

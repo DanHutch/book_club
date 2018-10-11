@@ -1,8 +1,31 @@
 <h1>Books</h1>
+
+<div class="stats_box">
+
+  <div><u>Best-Rated Books:</u></div>
+  <% @best_rated_books.each do |book| %>
+  <ul class="best_books">
+    <li> <%= book.title %> </li></ul>
+    <% end %>
+
+  <div><u>Worst-Rated Books:</u></div>
+  <% @worst_rated_books.each do |book| %>
+  <ul class="worst_books">
+    <li> <%= book.title %> </li></ul>
+    <% end %>
+
+  <div><u>Top Reviewers:</u></div>
+  <% @top_reviewers.each do |user| %>
+  <ul class="top_reviewers">
+    <li> <%= user.name %> </li></ul>
+    <% end %>
+
+</div>
+
 <p>Sort By:
   <a id="best-rated" href="/books?sorting=avg_rating&direction=DESC">Best-Rated</a> /
   <a id="worst_rated" href="/books?sorting=avg_rating&direction=ASC">Worst-Rated</a> /
-  <a id="most-pages" href="/books?sorting=pages&direction=ASC">Most-Pages</a> /
+  <a id="most-pages" href="/books?sorting=pages&direction=DESC">Most-Pages</a> /
   <a id="fewest-pages" href="/books?sorting=pages&direction=ASC">Fewest-Pages</a> /
   <a id="most-reviewed" href="/books?sorting=review_count&direction=DESC">Most-Reviewed</a> /
   <a id="least-reviewed" href="/books?sorting=review_count&direction=ASC">Least-Reviewed</a>

@@ -25,13 +25,37 @@ describe "Book_index" do
 
     review_17 = user_3.reviews.create(title: "My Type Of Book", description: "Hey Facundo read the chapter 43 The red wedding you are goin ot love it", score: 5, book: book_10)
 
+    review_170 = user_3.reviews.create(title: "My Type Of Book", description: "Hey Facundo read the chapter 43 The red wedding you are goin ot love it", score: 5, book: book_10)
+
     review_18 = user_9.reviews.create(title: "Bad Bad Bad", description: "this is so bad. So much death. It hurts", score: 1, book: book_10)
+    review_180 = user_9.reviews.create(title: "Bad Bad Bad", description: "this is so bad. So much death. It hurts", score: 1, book: book_10)
+    review_181 = user_9.reviews.create(title: "Bad Bad Bad", description: "this is so bad. So much death. It hurts", score: 1, book: book_10)
 
     review_19 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
+
+    review_190 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
+
+    review_191 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
+
+    review_192 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
+
 
     visit "/books"
 
     expect(page).to have_content("Books")
+
+    within ".stats_box" do
+# binding.pry
+      expect(all('.best_books')[0]).to have_content('Game Of Thrones')
+      expect(all('.best_books')[1]).to have_content('A Storm Of Swords')
+
+      expect(all('.worst_books')[0]).to have_content('A Storm Of Swords')
+      expect(all('.worst_books')[1]).to have_content('Game Of Thrones')
+
+      expect(all('.top_reviewers')[0]).to have_content("Son Goku")
+      expect(all('.top_reviewers')[1]).to have_content("Facundo Gracia")
+      expect(all('.top_reviewers')[2]).to have_content("Wade Wilson")
+    end
 
     within "#book-#{dune.id}" do
       expect(page).to have_content(dune.title)
@@ -126,6 +150,6 @@ describe "Book_index" do
     expect(all('.book_card')[0]).to have_content("Pages: #{book_8.pages}")
     expect(all('.book_card')[1]).to have_content('A Storm Of Swords')
     expect(all('.book_card')[1]).to have_content("Pages: #{book_10.pages}")
-    
+
   end
 end
