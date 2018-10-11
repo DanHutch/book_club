@@ -126,5 +126,6 @@ describe "Book_index" do
     expect(all('.book_card')[0]).to have_content("Pages: #{book_8.pages}")
     expect(all('.book_card')[1]).to have_content('A Storm Of Swords')
     expect(all('.book_card')[1]).to have_content("Pages: #{book_10.pages}")
+    
   end
 end
