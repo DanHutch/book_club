@@ -82,7 +82,7 @@ book_11 = author_6.books.create(title: "A Feast For Crows", pages: 752, year: 20
 user_11 = User.create(name: "Silvester Enigma")
 review_23 = user_11.reviews.create(title: "???", description: "I read the book and I didn't understanded. Them I realize I need to read the first 3 books", score: 2, book: book_11)
 
-book_12 = author_6.books.create(title: "A Dance With Drangons", pages: 1056, year: 2011)
+book_12 = author_6.books.create(title: "A Dance With Dragons", pages: 1056, year: 2011)
 user_12 = User.create(name: "Chad Sutoosky")
 review_24 = user_11.reviews.create(title: "Just Finished The 5th Book", description: "Good but too long", score: 3, book: book_12)
 
