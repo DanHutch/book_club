@@ -11,7 +11,7 @@ describe "user_go_to_new_page_and_create_a_new_book" do
     fragile_things = Book.create(title: "Good Omens", pages: 288, year: 1990, authors: [neil, terry])
 
     visit "/books/new"
-
+    
     book_title = "game of thrones"
 
     within('.new_book') do

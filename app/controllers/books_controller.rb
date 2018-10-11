@@ -9,6 +9,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    Book.create(params[:book])
+    Book.create(user_params)
+    redirect "/books"
+  end
+
+# This block should be last in the class
+  private
+
+  def user_params
+    params.require(:book).permit(:title, :pages, :year, :salt, :authors)
   end
 end

@@ -12,4 +12,13 @@ describe Book, type: :model do
     it { should have_many(:reviews) }
     it { should have_many(:authors).through(:book_authors) }
   end
- end
+  # decribre 'Create new book with title and authors name titlecase' do
+  #   it 'Should create new book with titlecase for title and authors name' do
+  #     neil = Author.create(name: "Neil Gaiman")
+  #     terry = Author.create(name: "Terry Pratchett")
+  #     fragile_things = Book.create(title: "Good Omens", pages: 288, year: 1990, authors: [neil, terry])
+  #
+  #   end
+  # end
+
+end
