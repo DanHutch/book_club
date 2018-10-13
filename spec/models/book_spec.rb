@@ -16,32 +16,19 @@ describe Book, type: :model do
     it 'Should create new book with titlecase for title and authors name' do
       neil = Author.create(name: "Neil Gaiman")
       terry = "terry pratchett"
-      book = Book.create_new(title: "good omens", pages: 288, year: 1990, authors: [neil, terry])
+      book = Book.create_book(title: "good omens", pages: 288, year: 1990, authors: [neil, terry])
 
       expect(book.title).to eq("Good Omens")
       expect(book.authors.first.name).to eq("Neil Gaiman")
       expect(book.authors.last.name).to eq("Terry Pratchett")
-    end
-    it 'should not create an author if it exists in database' do
-      neil = Author.create(name: "Neil Gaiman")
-      real_terry = Author.create(name: "Terry Pratchett")
-      terry = "terry pratchett"
-      book = Book.create_new(title: "good omens", pages: 288, year: 1990, authors: [neil, terry])
-
-      expect(book.title).to eq("Good Omens")
-      expect(book.authors.first.name).to eq("Neil Gaiman")
-      expect(book.authors.last.name).to eq("Terry Pratchett")
-      expect(book.authors.where(name: "Terry Pratchett").count).to eq(1)
     end
 
     it 'should parce a string with authors separate by (, )' do
       authors_string = "george r. r. martin, vago de al lado, Gabriel garcia marquez"
-      neil = Author.create(name: "Neil Gaiman")
-      book = Book.create_new(title: "good omens", pages: 288, year: 1990, authors: [authors_string, neil])
+      book = Book.create_book(title: "good omens", pages: 288, year: 1990, authors: [authors_string])
 
-      expect(book.authors[0].name).to eq("George R. R. Martin")
-      expect(book.authors[1].name).to eq("vago de al lado".titlecase)
-      expect(book.authors[2].name).to eq("Gabriel garcia marquez".titlecase)
+      expect(book.authors[0].name).to eq("vago de al lado".titlecase)
+      expect(book.authors[1].name).to eq("Gabriel garcia marquez".titlecase)
     end
   end
 
