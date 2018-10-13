@@ -1,0 +1,20 @@
+<div class="form_new_b">
+  <div class="container_1">
+    <%= form_for @book do |f| %>
+      <% f.label :title %>
+      <%= f.text_field :title%> <br />
+
+      <% f.label :pages %>
+      <%= f.text_field :pages%> <br />
+
+      <% f.label :year %>
+      <%= f.text_field :year%> <br />
+
+      <% f.label :authors %>
+      <p>Input Authors first name last name (separate multiple authors with , )</p>
+      <input type="text" name="authors" placeholder="Author Names"> <br />
+
+      <%= f.submit %>
+    <%end %>
+  </div>
+</div>
