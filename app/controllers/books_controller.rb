@@ -5,17 +5,15 @@ class BooksController < ApplicationController
   end
 
   def new
-
+    @book = Book.new()
   end
 
   def create
-    params_hash =  Author.authors_by_book(user_params(params))
-    Book.create_book(params_hash)
+    params_hash = user_params(params)
+    params_hash[:title] = params_hash[:title].titlecase
+    data =  Author.authors_by_book(params_hash)
+    @book = Book.create(params_hash)
     redirect_to "/books"
-
-    # authors = Author.authors_by_book(user_params(params))
-    # Book.create_book(authors)
-
   end
 
 # This block should be last in the controller

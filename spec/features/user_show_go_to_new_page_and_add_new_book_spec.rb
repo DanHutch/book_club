@@ -31,8 +31,8 @@ describe "user_go_to_new_page_and_create_a_new_book" do
       expect(page).to have_content(new_book.pages)
       expect(page).to have_content(new_book.year)
       expect(page).to_not have_content(authors)
-      expect(page).to have_content(new_book.authors.first.name.titlecase)
-      expect(page).to have_content(new_book.authors.last.name.titlecase)
+      expect(page).to have_content(new_book.authors.first.name)
+      expect(page).to have_content(new_book.authors.last.name)
     end
 
   end

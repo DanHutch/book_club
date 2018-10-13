@@ -12,15 +12,4 @@ class Author < ApplicationRecord
     end
     hash[:authors] = new_array
   end
-  #
-  # def self.select_author(author)
-  #   data = Author.find_by(name: "#{author}".titlecase) if author.class == String
-  #   if author.class == Author
-  #     author
-  #   elsif data.nil?
-  #     Author.create(name: "#{author}".titlecase)
-  #   else
-  #     data
-  #   end
-  # end
 end
