@@ -11,4 +11,8 @@ class BooksController < ApplicationController
     @top_reviewers = User.top_3
   end
 
+  def show
+    @book = Book.find(params[:id])
+  end
+
 end
