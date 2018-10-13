@@ -1,0 +1,19 @@
+<div class="book_show_header">
+
+<h1><u><%=@book.title%></u></h1>
+<% @book.authors.each do |auth| %>
+
+<p>By: <%=auth.name%></p> <% end %>
+<p>Pages: <%=@book.pages%> </p>
+</div>
+
+
+<div class="reviews_block">
+<h4>Reviews:</h4>
+<div class="review">
+<% @book.reviews.each do |rev| %>
+<p><u><%=rev.title%></u>, by <%=rev.user.name%></p>
+<p>Score: <%=rev.score%></p>
+<p>Review: "<%=rev.description%>"</p>
+<% end %></div>
+</div>
