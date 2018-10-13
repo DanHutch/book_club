@@ -13,6 +13,18 @@ class Book < ApplicationRecord
     reviews.average(:score).to_f.round(1)
   end
 
+  def top_3_reviews
+    sort_reviews('DESC').first(3)
+  end
+
+  def bottom_3_reviews
+    sort_reviews('ASC').first(3)
+  end
+
+  def sort_reviews(dir)
+    reviews.order("score #{dir}")
+  end
+
   def self.show_3_by_rating(dir)
     Book.do_sort('avg_rating', dir).first(3)
   end
