@@ -121,6 +121,8 @@ describe Book, type: :model do
       user_3 = User.create(name: "Wade Wilson")
       user_9 = User.create(name: "Facundo Gracia")
       user_5 = User.create(name: "Son Goku")
+      user_100 = User.create(name: "John Snow")
+      user_200 = User.create(name: "BillyBoy")
 
       book_8 = Book.create(title: "Game Of Thrones", pages: 604, year: 1996)
       author_6 = book_8.authors.create(name: "George R. R. Martin")
@@ -137,6 +139,11 @@ describe Book, type: :model do
 
       review_19 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
+      review_100 = user_100.reviews.create(title: "no likey", description: "This book doesn't have enough of me!", score: 2, book: book_10)
+
+      review_200 = user_200.reviews.create(title: "Boooooo!", description: "I don't like this book", score: 3, book: book_10)
+
+
 
       expect(Book.all).to eq([book_8, book_10])
 
@@ -146,6 +153,8 @@ describe Book, type: :model do
       expect(Book.do_sort('pages', 'ASC')).to eq([book_8, book_10])
       expect(Book.do_sort('review_count', 'DESC')).to eq([book_10, book_8])
       expect(Book.do_sort('review_count', 'ASC')).to eq([book_8, book_10])
+      expect(book_10.top_3_reviews).to eq([review_17, review_19, review_16])
+      expect(book_10.bottom_3_reviews).to eq([review_18, review_100, review_200])
     end
   end
  end

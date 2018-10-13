@@ -11,7 +11,6 @@ author_1 = book_1.authors.create(name: "Carlos Ruiz Zafon")
 user_1 = User.create(name: "Nathan Drake")
 review_1 = user_1.reviews.create(title: "Great Book", description: "A master piece of the 20th century", score: 4, book: book_1)
 
-
 book_2 = Book.create(title: "Blindness", pages: 288, year: 1997)
 author_2 = book_2.authors.create(name: "Jose Saramago")
 user_2 = User.create(name: "Pepper Pots")
@@ -100,3 +99,10 @@ review_27 = user_2.reviews.create(title: "Nice Story", description: "Good mix of
 review_28 = user_3.reviews.create(title: "Bad", description: "hey I have to poop in something....", score: 1, book: book_13)
 
 review_26 = user_8.reviews.create(title: "Decent", description: "It's okay", score: 3, book: book_13)
+
+user_100 = User.create(name: "John Snow")
+user_200 = User.create(name: "BillyBoy")
+
+review_100 = user_100.reviews.create(title: "No Likey", description: "This book doesn't have enough of me!", score: 2, book: book_10)
+
+review_200 = user_200.reviews.create(title: "Boooooo!", description: "I don't like this book", score: 3, book: book_10)

@@ -40,5 +40,23 @@ describe "Book_index" do
       end
     end
 
+    within ".book_show_stats" do
+      expect(page).to have_content(book_10.avg_rating)
+      within ".top_3_reviews" do
+        book_10.top_3_reviews.each do |rev|
+          expect(page).to have_content(rev.title)
+          expect(page).to have_content(rev.user.name)
+          expect(page).to have_content(rev.score)
+        end
+      end
+      within ".bottom_3_reviews" do
+        book_10.bottom_3_reviews.each do |rev|
+          expect(page).to have_content(rev.title)
+          expect(page).to have_content(rev.user.name)
+          expect(page).to have_content(rev.score)
+        end
+      end
+    end
+
   end
 end
