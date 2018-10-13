@@ -41,15 +41,14 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
 
     visit "/reviews/new"
 
-    book_title = "game of thrones"
-    authors = "george r. r. martin, vago de al lado"
+    book_review = "game of thrones"
+    book_description = "george r. r. martin, vago de al lado"
 
     within('.new_review') do
-      fill_in 'book[title]', with: book_title
-      fill_in 'book[pages]', with: 604
-      fill_in 'book[year]', with: 1996
-      fill_in 'book[authors]', with: authors
-      click_button 'Create Book'
+      fill_in 'review[title]', with: book_review
+      fill_in 'review[description]', with: book_description
+      fill_in 'review[score]', with: 5
+      click_button 'Create Review'
     end
 
     expect(current_path).to eq('/books')
