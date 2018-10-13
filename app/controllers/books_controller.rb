@@ -1,7 +1,18 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    if params[:sorting]
+      @books = Book.do_sort(params[:sorting], params[:direction])
+    else
+      @books = Book.all
+    end
+    @best_rated_books = Book.show_3_by_rating('DESC')
+    @worst_rated_books = Book.show_3_by_rating('ASC')
+    @top_reviewers = User.top_3
+  end
+
+  def show
+    @book = Book.find(params[:id])
   end
 
   def new
