@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "user_go_to_new_review_page_and_create_a_new_review" do
-  xit "should go and create a review" do
+  it "should go and create a review" do
     frank = Author.create(name: "Frank Herbert")
     dune = frank.books.create(title: "Dune", pages: 4123, year: 1965)
     ray = Author.create(name: "Ray Bradbury")
@@ -39,31 +39,41 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
 
     review_192 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
-    visit "/reviews/#{book_8.id}"
+    visit "/books/#{book_8.id}"
 
     book_review = "game of thrones"
     book_description = "It's a really bloody story"
+    user_name = "Megan Miles"
 
     within('.new_review') do
-      
+      click('Write A New Review')
     end
+
+    expect(current_path).to eq('/reviews/new')
+
     within('.new_review') do
+      fill_in 'review[user_name]', with: user_name
       fill_in 'review[title]', with: book_review
       fill_in 'review[description]', with: book_description
       fill_in 'review[score]', with: 5
       click_button 'Create Review'
     end
 
-    expect(current_path).to eq('/books')
-
     new_review = Review.last
-    within("#book-#{new_book.id}") do
-      expect(page).to have_content(book_title.titlecase)
-      expect(page).to have_content(new_book.pages)
-      expect(page).to have_content(new_book.year)
-      expect(page).to_not have_content(authors)
-      expect(page).to have_content(new_book.authors.first.name)
-      expect(page).to have_content(new_book.authors.last.name)
+
+    expect(current_path).to eq("/reviews/#{new_review.id}")
+
+    within("#review") do
+
+      expect(page).to have_content(User.last.name)
+      expect(page).to have_content(book_8.title)
+      expect(page).to_not have_content(book_10.title)
+      expect(page).to have_content(new_review.title)
+      expect(page).to have_content(new_review.description)
+      expect(page).to have_content(review_10.title)
+      expect(page).to have_content(review_10.description)
+      expect(page).to have_content(review_10.score)
+      expect(review_10.score).to shoul_be_between(1,5)
     end
 
   end
