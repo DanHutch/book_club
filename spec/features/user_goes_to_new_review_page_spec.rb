@@ -39,11 +39,14 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
 
     review_192 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
-    visit "/reviews/new"
+    visit "/reviews/#{book_8.id}"
 
     book_review = "game of thrones"
-    book_description = "george r. r. martin, vago de al lado"
+    book_description = "It's a really bloody story"
 
+    within('.new_review') do
+      
+    end
     within('.new_review') do
       fill_in 'review[title]', with: book_review
       fill_in 'review[description]', with: book_description
@@ -53,7 +56,7 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
 
     expect(current_path).to eq('/books')
 
-    new_book = Book.last
+    new_review = Review.last
     within("#book-#{new_book.id}") do
       expect(page).to have_content(book_title.titlecase)
       expect(page).to have_content(new_book.pages)
