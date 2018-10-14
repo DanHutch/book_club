@@ -46,13 +46,13 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
     user_name = "Megan Miles"
 
     within('.new_review') do
-      click('Write A New Review')
+      click_link('Click Here To Add A New Review')
     end
 
     expect(current_path).to eq('/reviews/new')
 
     within('.new_review') do
-      fill_in 'review[user_name]', with: user_name
+      fill_in 'review[user]', with: user_name
       fill_in 'review[title]', with: book_review
       fill_in 'review[description]', with: book_description
       fill_in 'review[score]', with: 5
@@ -61,7 +61,7 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
 
     new_review = Review.last
 
-    expect(current_path).to eq("/reviews/#{new_review.id}")
+    expect(current_path).to eq("/books/#{book_8.id}")
 
     within("#review") do
 

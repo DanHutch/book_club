@@ -1,8 +1,8 @@
 <div class="form_new_review">
   <div class="container_2">
     <%= form_for @review do |f| %>
-      <% f.label :user_name %>
-      <input type="text" name="review[users]" placeholder="User Name"> <br />
+      <% f.label :user %>
+      <input type="text" name="review[user]" placeholder="User Name"> <br />
 
       <% f.label :title %>
       <%= f.text_field :title%> <br />
