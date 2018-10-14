@@ -17,7 +17,7 @@
   <div><u>Top Reviewers:</u></div>
   <% @top_reviewers.each do |user| %>
   <ul class="top_reviewers">
-    <li> <%= user.name %> </li></ul>
+    <li><span class="user_link"><%= link_to "#{user.name}", user_path(user) %></span></li></ul>
     <% end %>
 
 </div>

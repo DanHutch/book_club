@@ -11,7 +11,7 @@
     <p>Top 3 reviews:</p>
     <ul>
       <% @book.top_3_reviews.each do |rev| %>
-      <li><u><%=rev.title%></u>, <%=rev.user.name%>, Rating: <%=rev.score%></li>
+      <li><u><%=rev.title%></u>, by <span class="user_link"><%= link_to "#{rev.user.name}", user_path(rev.user)%></span>, Rating: <%=rev.score%></li>
       <% end %>
     </ul>
   </div>
@@ -19,7 +19,7 @@
     <p>Bottom 3 reviews:</p>
     <ul>
       <% @book.bottom_3_reviews.each do |rev| %>
-      <li><u><%=rev.title%></u>, <%=rev.user.name%>, Rating: <%=rev.score%></li>
+      <li><u><%=rev.title%></u>, by <span class="user_link"><%= link_to "#{rev.user.name}", user_path(rev.user)%></span>, Rating: <%=rev.score%></li>
       <% end %>
     </ul>
   </div>
@@ -30,7 +30,7 @@
 <h4>Reviews:</h4>
 <div class="review">
 <% @book.reviews.each do |rev| %>
-<p><u><%=rev.title%></u>, by <%=rev.user.name%></p>
+<p><u><%=rev.title%></u>, by <span class="user_link"><%= link_to "#{rev.user.name}", user_path(rev.user)%></span></p>
 <p>Score: <%=rev.score%></p>
 <p>Review: "<%=rev.description%>"</p>
 <% end %></div>
