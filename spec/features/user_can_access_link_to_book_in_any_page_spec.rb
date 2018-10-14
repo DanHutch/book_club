@@ -45,61 +45,57 @@ describe "User can link to the book clicking the titke in all pages " do
     expect(page).to have_content("Books")
 
     within "#book-#{dune.id}" do
-      click_link('dune.title')
+      click_link("#{dune.title}")
     end
 
     expect(current_path).to eq("/books/#{dune.id}")
 
     within ".book_show_header" do
       expect(page).to have_content(dune.title)
-      expect(page).to have_content(dune.authors.name)
+      expect(page).to have_content("By: #{dune.authors.last.name}")
       expect(page).to have_content("Pages: #{dune.pages}")
-      expect(page).to have_content("Year: #{dune.year}")
     end
 
     visit "/books"
 
     within "#book-#{farenheit.id}" do
-      click_link('farenheit.title')
+      click_link("#{farenheit.title}")
     end
 
     expect(current_path).to eq("/books/#{farenheit.id}")
 
     within ".book_show_header" do
       expect(page).to have_content(farenheit.title)
-      expect(page).to have_content(farenheit.authors.name)
+      expect(page).to have_content("By: #{farenheit.authors.last.name}")
       expect(page).to have_content("Pages: #{farenheit.pages}")
-      expect(page).to have_content("Year: #{farenheit.year}")
     end
 
     visit "/books"
 
     within "#book-#{fragile_things.id}" do
-      click_link('fragile_things.title')
+      click_link("#{fragile_things.title}")
     end
 
     expect(current_path).to eq("/books/#{fragile_things.id}")
 
     within ".book_show_header" do
       expect(page).to have_content(fragile_things.title)
-      expect(page).to have_content(fragile_things.authors.name)
+      expect(page).to have_content("By: #{fragile_things.authors.first.name}")
       expect(page).to have_content("Pages: #{fragile_things.pages}")
-      expect(page).to have_content("Year: #{fragile_things.year}")
     end
 
     visit "/books"
 
     within "#book-#{book_10.id}" do
-      click_link('book_10.title')
+      click_link("#{book_10.title}")
     end
 
     expect(current_path).to eq("/books/#{book_10.id}")
 
     within ".book_show_header" do
       expect(page).to have_content(book_10.title)
-      expect(page).to have_content(book_10.authors.name)
+      expect(page).to have_content("By: #{book_10.authors.last.name}")
       expect(page).to have_content("Pages: #{book_10.pages}")
-      expect(page).to have_content("Year: #{book_10.year}")
     end
   end
 end
