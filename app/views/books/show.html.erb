@@ -7,7 +7,7 @@
 </div>
 
 <div class="new_review">
-  <a id="new_review" href="/reviews/new">Click Here To Add A New Review</a>
+  <%= link_to("Click Here To Add A New Review", url_to(action: 'new', controller 'reviews'), data: @book.id) %>
 </div>
 
 <div class="book_show_stats">
