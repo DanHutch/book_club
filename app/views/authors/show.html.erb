@@ -15,6 +15,11 @@
                 <% end %></ul>
             </li>
           <% end %>
+          <li>Top Review: <%= book.top_review.title %></li>
+          <ul>
+            <li>Score: <%=book.top_review.score%></li>
+            <li>Reviewed By: <%=book.top_review.user.name%></li>
+          </ul>
         </ul>
       </div>
       <% end %>
