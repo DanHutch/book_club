@@ -1,0 +1,22 @@
+<div class="author_show_header">
+  <h1><%=@author.name%></h1>
+  <div class="author_book_list">
+    <h2>Books:</h2>
+      <%@author.books.each do |book|%>
+      <div class="author_book_card">
+        <h4><u><%= book.title %></u><h4>
+        <ul>
+          <li>Pages: <%=book.pages%></li>
+          <% if book.other_authors(@author.id).size > 0 %>
+            <li>Written with:
+              <ul>
+                <%book.other_authors(@author.id).each do |auth|%>
+                  <li><%= auth.name %></li>
+                <% end %></ul>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+  </div>
+</div>

@@ -8,16 +8,21 @@
 <div class="book_show_stats">
   <p>Average Rating: <%=@book.avg_rating%></p>
   <div class="top_3_reviews"
-  <ul>Top 3 reviews:
-    <% @book.top_3_reviews.each do |rev| %>
-    <li><u><%=rev.title%></u>, <%=rev.user.name%>, Rating: <%=rev.score%></li>
-    <% end %>
-  </ul></div>
-  <div class="bottom_3_reviews"><ul>Bottom 3 reviews:
-    <% @book.bottom_3_reviews.each do |rev| %>
-    <li><u><%=rev.title%></u>, <%=rev.user.name%>, Rating: <%=rev.score%></li>
-    <% end %>
-  </ul></div>
+    <p>Top 3 reviews:</p>
+    <ul>
+      <% @book.top_3_reviews.each do |rev| %>
+      <li><u><%=rev.title%></u>, <%=rev.user.name%>, Rating: <%=rev.score%></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="bottom_3_reviews">
+    <p>Bottom 3 reviews:</p>
+    <ul>
+      <% @book.bottom_3_reviews.each do |rev| %>
+      <li><u><%=rev.title%></u>, <%=rev.user.name%>, Rating: <%=rev.score%></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 

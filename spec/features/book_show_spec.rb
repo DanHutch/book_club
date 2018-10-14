@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Book_index" do
+describe "Book_show" do
   it "user_can_see_single_book_with_all_details" do
 
     author_6 = Author.create(name: "George R. R. Martin")
