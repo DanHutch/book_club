@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User can link to the book show page clicking the title in all pages " do
+describe "User can link to the user show page clicking the name in all pages " do
   it "should link books by title in index page" do
     frank = Author.create(name: "Frank Herbert")
     dune = frank.books.create(title: "Dune", pages: 4123, year: 1965)
@@ -39,63 +39,5 @@ describe "User can link to the book show page clicking the title in all pages " 
 
     review_192 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
-
-    visit "/books"
-
-    expect(page).to have_content("Books")
-
-    within "#book-#{dune.id}" do
-      click_link("#{dune.title}")
-    end
-
-    expect(current_path).to eq("/books/#{dune.id}")
-
-    within ".book_show_header" do
-      expect(page).to have_content(dune.title)
-      expect(page).to have_content("By: #{dune.authors.last.name}")
-      expect(page).to have_content("Pages: #{dune.pages}")
-    end
-
-    visit "/books"
-
-    within "#book-#{farenheit.id}" do
-      click_link("#{farenheit.title}")
-    end
-
-    expect(current_path).to eq("/books/#{farenheit.id}")
-
-    within ".book_show_header" do
-      expect(page).to have_content(farenheit.title)
-      expect(page).to have_content("By: #{farenheit.authors.last.name}")
-      expect(page).to have_content("Pages: #{farenheit.pages}")
-    end
-
-    visit "/books"
-
-    within "#book-#{fragile_things.id}" do
-      click_link("#{fragile_things.title}")
-    end
-
-    expect(current_path).to eq("/books/#{fragile_things.id}")
-
-    within ".book_show_header" do
-      expect(page).to have_content(fragile_things.title)
-      expect(page).to have_content("By: #{fragile_things.authors.first.name}")
-      expect(page).to have_content("Pages: #{fragile_things.pages}")
-    end
-
-    visit "/books"
-
-    within "#book-#{book_10.id}" do
-      click_link("#{book_10.title}")
-    end
-
-    expect(current_path).to eq("/books/#{book_10.id}")
-
-    within ".book_show_header" do
-      expect(page).to have_content(book_10.title)
-      expect(page).to have_content("By: #{book_10.authors.last.name}")
-      expect(page).to have_content("Pages: #{book_10.pages}")
-    end
   end
 end

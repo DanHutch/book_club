@@ -5,7 +5,7 @@
   <div><u>Best-Rated Books:</u></div>
   <% @best_rated_books.each do |book| %>
   <ul class="best_books">
-    <li> <span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></li></ul>
+    <li><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></li></ul>
     <% end %>
 
   <div><u>Worst-Rated Books:</u></div>
