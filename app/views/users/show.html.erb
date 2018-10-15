@@ -1,0 +1,16 @@
+<div class="user_show_header">
+  <h1> <%= @user.name %> </h1>
+</div>
+
+<div class="user_show_reviews">
+  <div class="review_card">
+    <% @user.reviews.each do |rev| %>
+    <%= rev.title %>
+    <ul>
+      <li> <%= rev.score %> </li>
+      <li> <%= rev.description %> </li>
+    </ul>
+
+    <% end %>
+  </div>
+</div>
