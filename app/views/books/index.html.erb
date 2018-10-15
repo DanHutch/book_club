@@ -5,13 +5,13 @@
   <div><u>Best-Rated Books:</u></div>
   <% @best_rated_books.each do |book| %>
   <ul class="best_books">
-    <li> <%= book.title %> </li></ul>
+    <li><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></li></ul>
     <% end %>
 
   <div><u>Worst-Rated Books:</u></div>
   <% @worst_rated_books.each do |book| %>
   <ul class="worst_books">
-    <li> <%= book.title %> </li></ul>
+    <li> <span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span> </li></ul>
     <% end %>
 
   <div><u>Top Reviewers:</u></div>
@@ -33,7 +33,7 @@
 
 <% @books.each do |book| %>
   <div class="book_card" id="book-<%= book.id %>">
-  <h2><u><%= book.title %></u></h2>
+  <h2><u><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></u></h2>
   <ul class="book_stats">
     <li>Author(s):
       <% book.authors.each do |auth| %>
