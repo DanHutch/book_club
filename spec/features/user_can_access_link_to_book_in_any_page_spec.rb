@@ -40,7 +40,7 @@ describe "User can link to the book show page clicking the title in all pages " 
     review_192 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
 
-    visit "/books"
+    visit books_path
 
     expect(page).to have_content("Books")
 
@@ -56,7 +56,7 @@ describe "User can link to the book show page clicking the title in all pages " 
       expect(page).to have_content("Pages: #{dune.pages}")
     end
 
-    visit "/books"
+    visit books_path
 
     within "#book-#{farenheit.id}" do
       click_link("#{farenheit.title}")
@@ -70,7 +70,7 @@ describe "User can link to the book show page clicking the title in all pages " 
       expect(page).to have_content("Pages: #{farenheit.pages}")
     end
 
-    visit "/books"
+    visit books_path
 
     within "#book-#{fragile_things.id}" do
       click_link("#{fragile_things.title}")
@@ -84,7 +84,7 @@ describe "User can link to the book show page clicking the title in all pages " 
       expect(page).to have_content("Pages: #{fragile_things.pages}")
     end
 
-    visit "/books"
+    visit books_path
 
     within "#book-#{book_10.id}" do
       click_link("#{book_10.title}")

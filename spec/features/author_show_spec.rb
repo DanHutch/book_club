@@ -20,7 +20,7 @@ describe "author_show" do
     review_4 = user_2.reviews.create(title: "Whatevs", description: "blah blah blah", score: 2, book: book_2)
 
 
-    visit "authors/#{author.id}"
+     visit author_path(author)
 
       expect(page).to have_content("#{author.name}")
 
