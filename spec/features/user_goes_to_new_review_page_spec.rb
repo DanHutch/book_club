@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "user_go_to_new_review_page_and_create_a_new_review" do
-  xit "should go and create a review" do
+  it "should go and create a review" do
     frank = Author.create(name: "Frank Herbert")
     dune = frank.books.create(title: "Dune", pages: 4123, year: 1965)
     ray = Author.create(name: "Ray Bradbury")
@@ -63,17 +63,12 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
 
     expect(current_path).to eq(book_path(book_8))
 
-    within("#review") do
+    within(".review") do
 
       expect(page).to have_content(User.last.name)
-      expect(page).to have_content(book_8.title)
-      expect(page).to_not have_content(book_10.title)
       expect(page).to have_content(new_review.title)
       expect(page).to have_content(new_review.description)
-      expect(page).to have_content(review_10.title)
-      expect(page).to have_content(review_10.description)
-      expect(page).to have_content(review_10.score)
-      expect(review_10.score).to shoul_be_between(1,5)
+      expect(page).to have_content(new_review.score)
     end
 
   end

@@ -8,10 +8,10 @@ class ReviewsController < ApplicationController
   def create
     @user = User.find_or_create_by(name: review_params[:user])
     @book = Book.find(params[:book_id])
-    binding.pry
-      if @book.reviews.user.where(user_id: @user.id).empty?
-
-      end
+    hash = review_params
+    hash[:user] = @user
+    @review = @book.reviews.create(hash)
+    redirect_to book_path(@book)
   end
 
   private
