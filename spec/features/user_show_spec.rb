@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-# I should also see links to sort reviews in the following ways:
-# - sort reviews newest first (descending chronological order)
-# - sort reviews oldest first (ascending chronological order)
-
 describe "user show page" do
 
   before(:each) do
