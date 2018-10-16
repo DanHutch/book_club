@@ -1,5 +1,8 @@
 <div class="book_show_header">
   <h1><u><%=@book.title%></u></h1>
+  <div class="delete">
+    <%=link_to "Delete Book", book_path(@book), method: "delete"%>
+  </div>
   <% @book.authors.each do |auth| %>
     <p>By: <%= link_to "#{auth.name}", author_path(auth) %></p>
   <% end %>
