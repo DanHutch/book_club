@@ -1,27 +1,28 @@
 <div class="author_show_header">
   <h1><%=@author.name%></h1>
-  <div class="author_book_list">
-    <h2>Books:</h2>
-      <%@author.books.each do |book|%>
-      <div class="author_book_card">
-        <h4><u><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></u><h4>
-        <ul>
-          <li>Pages: <%=book.pages%></li>
-          <% if book.other_authors(@author.id).size > 0 %>
-            <li>Written with:
-              <ul>
-                <%book.other_authors(@author.id).each do |auth|%>
-                  <li><%= auth.name %></li>
-                <% end %></ul>
-            </li>
-          <% end %>
-          <li>Top Review: <%= book.top_review.title %></li>
-          <ul>
-            <li>Score: <%=book.top_review.score%></li>
-            <li>Reviewed By: <span class="user_link"><%= link_to "#{book.top_review.user.name}", user_path(book.top_review.user) %></span></li>
-          </ul>
-        </ul>
-      </div>
-      <% end %>
-  </div>
 </div>
+
+<div class="author_book_list">
+  <h2>Books:</h2>
+    <%@author.books.each do |book|%>
+    <div class="author_book_card">
+      <h4><u><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></u><h4>
+      <ul>
+        <li>Pages: <%=book.pages%></li>
+        <% if book.other_authors(@author.id).size > 0 %>
+          <li>Written with:
+            <ul>
+              <%book.other_authors(@author.id).each do |auth|%>
+                <li><%= link_to "#{auth.name}", author_path(auth) %></li>
+              <% end %></ul>
+          </li>
+        <% end %>
+        <li>Top Review: <%= book.top_review.title %></li>
+        <ul>
+          <li>Score: <%=book.top_review.score%></li>
+          <li>Reviewed By: <span class="user_link"><%= link_to "#{book.top_review.user.name}", user_path(book.top_review.user) %></span></li>
+        </ul>
+      </ul>
+    </div>
+    <% end %>
+  </div>

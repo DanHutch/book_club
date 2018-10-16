@@ -41,7 +41,7 @@
     <li>Author(s):
       <% book.authors.each do |auth| %>
       <ul class="book_authors">
-        <li> <%= auth.name %> </li>
+        <li> <%= link_to "#{auth.name}", author_path(auth) %> </li>
       </ul></li>
     <% end %>
     <li>Pages: <%= book.pages %></li>
