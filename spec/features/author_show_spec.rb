@@ -95,5 +95,18 @@ describe "author_show" do
     expect(page).to_not have_content(frank.name)
     expect(page).to_not have_content(dune.title)
 
+    visit author_path(terry)
+
+    click_on "Delete Author"
+
+    expect(current_path).to eq(books_path)
+
+    visit book_path(fragile_things)
+
+    expect(page).to_not have_content(terry.name)
+    expect(page).to have_content(neil.name)
+    expect(page).to have_content(fragile_things.title)
+
+
   end
 end
