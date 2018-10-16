@@ -40,15 +40,22 @@ describe 'Deleting reviews' do
 
     review_192 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
-    review_1000 = dune.reviews.create(title: "Great", description: "An instant classic.", score: 5, user: user_3)
+    review_1000 = dune.reviews.create(title: "Great 2", description: "An instant classic.", score: 5, user: user_3)
 
-    review_2000 = farenheit.reviews.create(title: "Great", description: "An instant classic.", score: 5, user: user_3)
+    review_2000 = farenheit.reviews.create(title: "Great 1", description: "An instant classic.", score: 5, user: user_3)
 
-    review_3000 = fragile_things.reviews.create(title: "Great", description: "An instant classic.", score: 5, user: user_3)
+    review_3000 = fragile_things.reviews.create(title: "Great stuff", description: "An instant classic. By a 1000 time", score: 5, user: user_3)
 
     visit user_path(user_3)
 
-    within(".review_#{review_3000.id}")
-    click_on("Delete")
+    within("#delete_#{review_3000.id}") do
+    click_on("Delete Review")
+    end
+
+    expect(current_path).to eq(user_path(user_3))
+
+    expect(page).to_not have_content(review_3000.title)
+    expect(page).to_not have_content(review_3000.description)
+
   end
 end

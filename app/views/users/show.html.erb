@@ -19,6 +19,7 @@
           <li> <%= rev.score %> </li>
           <li> <%= rev.description %> </li>
         </ul>
+        <div class="delete" id="delete_<%= rev.id %>"><%= link_to "Delete Review", review_path(rev), method: "delete" %></div>
       </div>
     <% end %>
 </div>
