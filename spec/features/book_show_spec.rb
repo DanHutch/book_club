@@ -65,6 +65,8 @@ describe "Book_show" do
 
     book_10 = author_6.books.create(title: "A Storm Of Swords", pages: 973, year: 2000)
 
+    book_11 = author_6.books.create(title: "Game of Thrones", pages: 3847, year: 2008)
+
     user_10 = User.create(name: "Neyla Gracia")
     user_3 = User.create(name: "Wade Wilson")
     user_5 = User.create(name: "Son Goku")
@@ -79,13 +81,19 @@ describe "Book_show" do
 
     review_19 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
-    visit book_path(book_10)
+    review_20 = user_5.reviews.create(title: "hola mundo", description: "Good book", score: 4, book: book_11)
+
+    visit book_path(book_11)
 
     click_on "Delete Book"
 
     expect(current_path).to eq(books_path)
 
-    expect(page).to_not have_content(book_10.title)
+    expect(page).to_not have_content(book_11.title)
+
+    visit user_path(user_5)
+
+    expect(page).to_not have_content(review_20.title)
 
   end
 end

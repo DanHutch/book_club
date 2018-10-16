@@ -1,5 +1,8 @@
 <div class="author_show_header">
   <h1><%=@author.name%></h1>
+  <div class="delete">
+    <%= link_to "Delete Author", author_path(@author), method: "delete"  %>
+  </div>
 </div>
 
 <div class="author_book_list">
