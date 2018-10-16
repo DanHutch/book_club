@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :books, :only => [:index, :show, :create, :new] do
     resources :reviews, :only => [:new, :create]
   end
+  resources :reviews, :only => [:destroy]
   resources :authors, :except => [:index, :edit, :update ]
   resources :users, :only => [:show, :new, :create]
 

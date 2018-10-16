@@ -12,11 +12,14 @@
 <div class="user_show_reviews">
     <% @reviews.each do |rev| %>
       <div class="user_review_card">
-        <%= rev.title %>
+        <span class="review_<%= rev.id  %>">
+          <%= rev.title %>
+        </span>
         <ul>
           <li> <%= rev.score %> </li>
           <li> <%= rev.description %> </li>
         </ul>
+        <div class="delete" id="delete_<%= rev.id %>"><%= link_to "Delete Review", review_path(rev), method: "delete" %></div>
       </div>
     <% end %>
 </div>
