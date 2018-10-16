@@ -10,7 +10,7 @@ describe "user_go_to_new_page_and_create_a_new_book" do
     terry = Author.create(name: "Terry Pratchett")
     fragile_things = Book.create(title: "Good Omens", pages: 288, year: 1990, authors: [neil, terry])
 
-    visit "/books/new"
+    visit new_book_path
 
     book_title = "game of thrones"
     authors = "george r. r. martin, vago de al lado"
@@ -23,7 +23,7 @@ describe "user_go_to_new_page_and_create_a_new_book" do
       click_button 'Create Book'
     end
 
-    expect(current_path).to eq('/books')
+    expect(current_path).to eq(books_path)
 
     new_book = Book.last
     within("#book-#{new_book.id}") do

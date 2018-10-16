@@ -40,7 +40,7 @@ describe "Book_index" do
     review_192 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
 
-    visit "/books"
+    visit books_path
 
     expect(page).to have_content("Books")
 
@@ -108,42 +108,45 @@ describe "Book_index" do
 
     review_19 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
-    visit "/books?sorting=avg_rating&direction=DESC"
+    visit books_path
+
+    click_on "Best-Rated"
 
     expect(all('.book_card')[0]).to have_content('Game Of Thrones')
     expect(all('.book_card')[0]).to have_content("Pages: #{book_8.pages}")
     expect(all('.book_card')[1]).to have_content('A Storm Of Swords')
     expect(all('.book_card')[1]).to have_content("Pages: #{book_10.pages}")
 
-    visit '/books?sorting=avg_rating&direction=ASC'
+
+    click_on "Worst-Rated"
 
     expect(all('.book_card')[1]).to have_content('Game Of Thrones')
     expect(all('.book_card')[1]).to have_content("Pages: #{book_8.pages}")
     expect(all('.book_card')[0]).to have_content('A Storm Of Swords')
     expect(all('.book_card')[0]).to have_content("Pages: #{book_10.pages}")
 
-    visit '/books?sorting=pages&direction=ASC'
+    click_on "Fewest-Pages"
 
     expect(all('.book_card')[0]).to have_content('Game Of Thrones')
     expect(all('.book_card')[0]).to have_content("Pages: #{book_8.pages}")
     expect(all('.book_card')[1]).to have_content('A Storm Of Swords')
     expect(all('.book_card')[1]).to have_content("Pages: #{book_10.pages}")
 
-    visit '/books?sorting=pages&direction=DESC'
+    click_on "Most-Pages"
 
     expect(all('.book_card')[1]).to have_content('Game Of Thrones')
     expect(all('.book_card')[1]).to have_content("Pages: #{book_8.pages}")
     expect(all('.book_card')[0]).to have_content('A Storm Of Swords')
     expect(all('.book_card')[0]).to have_content("Pages: #{book_10.pages}")
 
-    visit '/books?sorting=review_count&direction=DESC'
+    click_on "Most-Reviewed"
 
     expect(all('.book_card')[1]).to have_content('Game Of Thrones')
     expect(all('.book_card')[1]).to have_content("Pages: #{book_8.pages}")
     expect(all('.book_card')[0]).to have_content('A Storm Of Swords')
     expect(all('.book_card')[0]).to have_content("Pages: #{book_10.pages}")
 
-    visit '/books?sorting=review_count&direction=ASC'
+    click_on "Least-Reviewed"
 
     expect(all('.book_card')[0]).to have_content('Game Of Thrones')
     expect(all('.book_card')[0]).to have_content("Pages: #{book_8.pages}")

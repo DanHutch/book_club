@@ -20,17 +20,17 @@ class BooksController < ApplicationController
   end
 
   def create
-    params_hash = user_params(params)
+    params_hash = book_params
     params_hash[:title] = params_hash[:title].titlecase
     data =  Author.authors_by_book(params_hash)
     @book = Book.create(params_hash)
-    redirect_to "/books"
+    redirect_to books_path
   end
 
 # This block should be last in the controller
   private
 
-  def user_params(params)
+  def book_params
     params.require(:book).permit(:title, :pages, :year, :authors)
   end
 end

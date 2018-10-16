@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Book_index" do
+describe "Book_show" do
   it "user_can_see_single_book_with_all_details" do
 
     author_6 = Author.create(name: "George R. R. Martin")
@@ -21,7 +21,7 @@ describe "Book_index" do
 
     review_19 = user_5.reviews.create(title: "Strong Content", description: "Good book, lot's of plots lines. It's okay", score: 5, book: book_10)
 
-    visit "/books/#{book_10.id}"
+    visit book_path(book_10)
 
     within ".book_show_header" do
       expect(page).to have_content("#{book_10.title}")

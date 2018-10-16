@@ -10,8 +10,16 @@ class Book < ApplicationRecord
     reviews.size
   end
 
+  def other_authors(id)
+    authors.where.not(id: id)
+  end
+
   def avg_rating
     reviews.average(:score).to_f.round(1)
+  end
+
+  def top_review
+    sort_reviews('DESC').first
   end
 
   def top_3_reviews

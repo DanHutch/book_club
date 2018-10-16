@@ -5,26 +5,26 @@
   <div><u>Best-Rated Books:</u></div>
   <% @best_rated_books.each do |book| %>
   <ul class="best_books">
-    <li> <%= book.title %> </li></ul>
+    <li><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></li></ul>
     <% end %>
 
   <div><u>Worst-Rated Books:</u></div>
   <% @worst_rated_books.each do |book| %>
   <ul class="worst_books">
-    <li> <%= book.title %> </li></ul>
+    <li> <span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span> </li></ul>
     <% end %>
 
   <div><u>Top Reviewers:</u></div>
   <% @top_reviewers.each do |user| %>
   <ul class="top_reviewers">
-    <li> <%= user.name %> </li></ul>
+    <li><span class="user_link"><%= link_to "#{user.name}", user_path(user) %></span></li></ul>
     <% end %>
 
 </div>
 
 <p>Sort By:
   <a id="best-rated" href="/books?sorting=avg_rating&direction=DESC">Best-Rated</a> /
-  <a id="worst_rated" href="/books?sorting=avg_rating&direction=ASC">Worst-Rated</a> /
+  <a id="worst-rated" href="/books?sorting=avg_rating&direction=ASC">Worst-Rated</a> /
   <a id="most-pages" href="/books?sorting=pages&direction=DESC">Most-Pages</a> /
   <a id="fewest-pages" href="/books?sorting=pages&direction=ASC">Fewest-Pages</a> /
   <a id="most-reviewed" href="/books?sorting=review_count&direction=DESC">Most-Reviewed</a> /
@@ -36,7 +36,7 @@
 
 <% @books.each do |book| %>
   <div class="book_card" id="book-<%= book.id %>">
-  <h2><u><%= book.title %></u></h2>
+  <h2><u><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></u></h2>
   <ul class="book_stats">
     <li>Author(s):
       <% book.authors.each do |auth| %>
