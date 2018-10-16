@@ -15,9 +15,9 @@ describe User, type: :model do
       book_2 = author_1.books.create(title: "Second Book", pages: 200, year:2010)
       review_2 = user.reviews.create(title: "Better Than The Last One", book: book_2, score: 3, description: "I liked this book more.")
 
-      expect(user.sort_reviews('DESC')).to eq([review_2, review_1])
+      expect(user.sort_reviews('created_at', 'DESC')).to eq([review_2, review_1])
 
-      expect(user.sort_reviews('ASC')).to eq([review_1, review_2])
+      expect(user.sort_reviews('created_at', 'ASC')).to eq([review_1, review_2])
     end
   end
  end
