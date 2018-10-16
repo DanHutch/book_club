@@ -1,7 +1,7 @@
 <div class="book_show_header">
   <h1><u><%=@book.title%></u></h1>
   <% @book.authors.each do |auth| %>
-    <p>By: <%=auth.name%></p>
+    <p>By: <%= link_to "#{auth.name}", author_path(auth) %></p>
   <% end %>
   <p>Pages: <%=@book.pages%> </p>
 </div>
