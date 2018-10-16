@@ -12,4 +12,8 @@ class User < ApplicationRecord
     User.select('users.*, count(reviews) as review_count').joins(:reviews).group(:user_id, :id).order("review_count #{dir}")
   end
 
+  def sort_reviews(trait, dir)
+    reviews.order("#{trait} #{dir}")
+  end
+
 end
