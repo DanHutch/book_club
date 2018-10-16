@@ -30,6 +30,9 @@
   <a id="most-reviewed" href="/books?sorting=review_count&direction=DESC">Most-Reviewed</a> /
   <a id="least-reviewed" href="/books?sorting=review_count&direction=ASC">Least-Reviewed</a>
 </p>
+<div class="new_content">
+    <a id="new_book" href="/books/new">Click Here To Add A New Book</a>
+</div>
 
 <% @books.each do |book| %>
   <div class="book_card" id="book-<%= book.id %>">
