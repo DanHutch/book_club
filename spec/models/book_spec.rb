@@ -266,6 +266,8 @@ describe Book, type: :model do
       expect(author_8.books.first.other_authors(author_8.id).first.name).to eq("Terry Pratchett")
       expect(book_10.top_review.id).to eq (17)
 
+      
+
     end
   end
  end

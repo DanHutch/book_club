@@ -3,8 +3,8 @@ class Book < ApplicationRecord
 
   has_many :book_authors
   has_many :reviews
-  has_many :authors, through: :book_authors
-  has_many :user, through: :reviews
+  has_many :authors, through: :book_authors, dependent: :destroy
+  has_many :user, through: :reviews, dependent: :destroy
 
   def review_count
     reviews.size
