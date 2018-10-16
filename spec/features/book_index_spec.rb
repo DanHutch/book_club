@@ -45,7 +45,6 @@ describe "Book_index" do
     expect(page).to have_content("Books")
 
     within ".stats_box" do
-# binding.pry
       expect(all('.best_books')[0]).to have_content('Game Of Thrones')
       expect(all('.best_books')[1]).to have_content('A Storm Of Swords')
 

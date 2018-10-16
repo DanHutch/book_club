@@ -7,7 +7,7 @@
 </div>
 
 <div class="new_review">
-  <%= link_to(body: "Click Here To Add A New Review", url: '/reviews/new', html_options = {params[book_id:] = @book.id}  %>
+  <%= link_to "Click Here To Add A New Review", new_book_review_path(@book)  %>
 </div>
 
 <div class="book_show_stats">
