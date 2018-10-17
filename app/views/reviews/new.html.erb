@@ -1,16 +1,18 @@
-<div class="form_new_review">
+<h1>New Review</h1>
+<div class="form_new">
   <div class="container_2">
+
     <%= form_for [@book, @review] do |f| %>
-      <% f.label :user %>
+      <%= f.label :user %>
       <%= f.text_field :user, placeholder: "User Name" %> <br />
 
-      <% f.label :title %>
+      <%= f.label :title %>
       <%= f.text_field :title%> <br />
 
-      <% f.label :description %>
+      <%= f.label :description %>
       <%= f.text_area :description%> <br />
 
-      <% f.label :score %>
+      <%= f.label :score %>
       <%= f.text_field :score%> <br />
 
       <%= f.submit %>

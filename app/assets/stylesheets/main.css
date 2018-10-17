@@ -1,0 +1,91 @@
+body{
+  background-color: #78A4A2;
+  font-family: 'Mali', cursive;
+}
+
+h1{
+  text-align: center;
+}
+
+.stats_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.stats_box > div {
+  background-color: #F9F7F3;
+  border-radius: 5px 15px;
+  padding: 10px;
+  width: 300px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats_box > div > ul {
+  list-style: none;
+}
+
+
+#sort_links{
+  text-align: center;
+}
+
+.new_content{
+  text-align: center;
+}
+
+.book_section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100vw;
+}
+
+.book_card, .author_book_card {
+  width: 250px;
+  background-color: #B3C0A4;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.delete{
+  text-align: center;
+}
+
+.author_book_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviews_block {
+  flex-direction: row;
+  width: auto;
+  justify-content: space-around;
+}
+
+.review {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 250px;
+  background-color: #B3C0A4;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 80px;
+  height: 400px;
+}
+
+.book_show_info, .sort_reviews_links {
+  text-align: center
+}
+
+.form_new {
+  display: inline-flex;
+  align-content: center;
+}
