@@ -2,27 +2,35 @@
 
 <div class="stats_box">
 
-  <div><u>Best-Rated Books:</u></div>
-  <% @best_rated_books.each do |book| %>
-  <ul class="best_books">
-    <li><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></li></ul>
+  <u>Best-Rated Books:</u>
+    <% @best_rated_books.each do |book| %>
+    <div>
+      <ul class="best_books">
+        <li><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></li>
+      </ul>
+      <% end %>
+    </div>
+
+  <u>Worst-Rated Books:</u>
+    <% @worst_rated_books.each do |book| %>
+    <div>
+      <ul class="worst_books">
+        <li> <span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span> </li>
+      </ul>
+    </div>
     <% end %>
 
-  <div><u>Worst-Rated Books:</u></div>
-  <% @worst_rated_books.each do |book| %>
-  <ul class="worst_books">
-    <li> <span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span> </li></ul>
-    <% end %>
-
-  <div><u>Top Reviewers:</u></div>
-  <% @top_reviewers.each do |user| %>
-  <ul class="top_reviewers">
-    <li><span class="user_link"><%= link_to "#{user.name}", user_path(user) %></span></li></ul>
-    <% end %>
-
+  <u>Top Reviewers:</u>
+    <% @top_reviewers.each do |user| %>
+    <div>
+      <ul class="top_reviewers">
+        <li><span class="user_link"><%= link_to "#{user.name}", user_path(user) %></span></li>
+      </ul>
+    </div>
+  <% end %>
 </div>
 
-<p>Sort By:
+<p id="sort_links">Sort By:
   <a id="best-rated" href="/books?sorting=avg_rating&direction=DESC">Best-Rated</a> /
   <a id="worst-rated" href="/books?sorting=avg_rating&direction=ASC">Worst-Rated</a> /
   <a id="most-pages" href="/books?sorting=pages&direction=DESC">Most-Pages</a> /
@@ -30,25 +38,29 @@
   <a id="most-reviewed" href="/books?sorting=review_count&direction=DESC">Most-Reviewed</a> /
   <a id="least-reviewed" href="/books?sorting=review_count&direction=ASC">Least-Reviewed</a>
 </p>
+
 <div class="new_content">
     <a id="new_book" href="/books/new">Click Here To Add A New Book</a>
 </div>
 
-<% @books.each do |book| %>
-  <div class="book_card" id="book-<%= book.id %>">
-  <h2><u><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></u></h2>
-  <ul class="book_stats">
-    <li>Author(s):
-      <% book.authors.each do |auth| %>
-      <ul class="book_authors">
-        <li> <%= link_to "#{auth.name}", author_path(auth) %> </li>
-      </ul></li>
-    <% end %>
-    <li>Pages: <%= book.pages %></li>
-    <li>Year: <%= book.year %> </li>
-    <li>Average Rating: <%= book.avg_rating %>
-      <ul class="ratings_count">
-        <li>Based on <%= book.review_count %> review(s)</li>
-      </ul></li>
-  </ul>
-<% end %>
+<div class="book_section">
+  <% @books.each do |book| %>
+    <div class="book_card" id="book-<%= book.id %>">
+    <h2><u><span class="book_link"><%= link_to "#{book.title}", book_path(book) %></span></u></h2>
+    <ul class="book_stats">
+      <li>Author(s):
+        <% book.authors.each do |auth| %>
+        <ul class="book_authors">
+          <li> <%= link_to "#{auth.name}", author_path(auth) %> </li>
+        </ul></li>
+      <% end %>
+      <li>Pages: <%= book.pages %></li>
+      <li>Year: <%= book.year %> </li>
+      <li>Average Rating: <%= book.avg_rating %>
+        <ul class="ratings_count">
+          <li>Based on <%= book.review_count %> review(s)</li>
+        </ul></li>
+    </ul>
+  </div>
+  <% end %>
+</div>

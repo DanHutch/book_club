@@ -33,15 +33,15 @@ describe "user show page" do
 
     click_on "Newest-First"
 
-    expect(all('.user_review_card')[0]).to have_content(@review_2.title)
+    expect(all('.review')[0]).to have_content(@review_2.title)
 
-    expect(all('.user_review_card')[0]).to_not have_content(@review_1.title)
+    expect(all('.review')[0]).to_not have_content(@review_1.title)
 
     click_on "Oldest-First"
 
-    expect(all('.user_review_card')[0]).to have_content(@review_1.title)
+    expect(all('.review')[0]).to have_content(@review_1.title)
 
-    expect(all('.user_review_card')[0]).to_not have_content(@review_2.title)
+    expect(all('.review')[0]).to_not have_content(@review_2.title)
 
   end
 end

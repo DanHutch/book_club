@@ -63,7 +63,7 @@ describe "user_go_to_new_review_page_and_create_a_new_review" do
 
     expect(current_path).to eq(book_path(book_8))
 
-    within(".review") do
+    within(".reviews_block") do
 
       expect(page).to have_content(User.last.name)
       expect(page).to have_content(new_review.title)

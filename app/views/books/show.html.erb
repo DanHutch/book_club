@@ -3,15 +3,14 @@
   <div class="delete">
     <%=link_to "Delete Book", book_path(@book), method: "delete"%>
   </div>
-  <% @book.authors.each do |auth| %>
-    <p>By: <%= link_to "#{auth.name}", author_path(auth) %></p>
-  <% end %>
-  <p>Pages: <%=@book.pages%> </p>
+  <div class="book_show_info">
+    <% @book.authors.each do |auth| %>
+      <p>By: <%= link_to "#{auth.name}", author_path(auth) %></p>
+    <% end %>
+    <p>Pages: <%=@book.pages%> </p>
+  </div>
 </div>
 
-<div class="new_review">
-  <%= link_to "Click Here To Add A New Review", new_book_review_path(@book)  %>
-</div>
 
 <div class="book_show_stats">
   <p>Average Rating: <%=@book.avg_rating%></p>
@@ -34,12 +33,16 @@
 </div>
 
 
-<div class="reviews_block">
 <h4>Reviews:</h4>
-<div class="review">
-<% @book.reviews.each do |rev| %>
-<p><u><%=rev.title%></u>, by <span class="user_link"><%= link_to "#{rev.user.name}", user_path(rev.user)%></span></p>
-<p>Score: <%=rev.score%></p>
-<p>Review: "<%=rev.description%>"</p>
-<% end %></div>
+<span class="new_review">
+  <%= link_to "Click Here To Add A New Review", new_book_review_path(@book)  %>
+</span>
+<div class="reviews_block">
+  <% @book.reviews.each do |rev| %>
+  <div class="review">
+    <p><u><%=rev.title%></u>, by <span class="user_link"><%= link_to "#{rev.user.name}", user_path(rev.user)%></span></p>
+    <p>Score: <%=rev.score%></p>
+    <p>Review: "<%=rev.description%>"</p>
+  </div>
+  <% end %>
 </div>
