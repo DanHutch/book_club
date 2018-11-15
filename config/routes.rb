@@ -12,15 +12,14 @@ Rails.application.routes.draw do
 
 #Refactored Routes for mod3 prework
 
-  resources :books, :only => [:new] do
-    resources :reviews, :only => [:new, :create]
-  end
-
+  get '/books/new', to: "books#new", as: 'new_book'
   get '/books', to: "books#index", as: 'books'
   get '/books/:id', to: "books#show"
-  # get '/book/new', to: "books#new", as: 'new_book'
   post '/books', to: "books#create"
   delete '/books/:id', to: "books#destroy", as: 'book'
+
+  get '/books/:book_id/reviews/new', to: "reviews#new", as: 'new_book_review'
+  post '/books/:book_id/reviews', to: "reviews#create", as: 'book_reviews'
 
   delete '/reviews/:id', to: "reviews#destroy", as: 'review'
 
