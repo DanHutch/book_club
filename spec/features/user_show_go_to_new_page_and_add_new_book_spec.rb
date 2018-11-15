@@ -11,6 +11,7 @@ describe "user_go_to_new_page_and_create_a_new_book" do
     fragile_things = Book.create(title: "Good Omens", pages: 288, year: 1990, authors: [neil, terry])
 
     visit new_book_path
+    expect(current_path).to eq('/books/new')
 
     book_title = "game of thrones"
     authors = "george r. r. martin, vago de al lado"
